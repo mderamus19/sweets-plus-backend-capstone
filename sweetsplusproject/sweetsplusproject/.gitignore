@@ -18,7 +18,7 @@ local_settings.py
 .env
 
 # virtualenv
-sweetsplusenv/
+sweetsplusenv
 .vscode
 
 .DS_Store
