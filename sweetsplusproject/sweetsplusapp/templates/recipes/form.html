@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Recipe</title>
+</head>
+
+<body>
+    <h1>Recipe Book</h1>
+
+    {% if recipe.id is not None %}
+        <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="post">
+    {% else %}
+        <form action="{% url 'sweetsplusapp:recipes' %}" method="post">
+    {% endif %}
+        {% csrf_token %}
+        <fieldset>
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" value="{{ recipe.name }}">
+        </fieldset>
+        <fieldset>
+            <label for="description">Description: </label>
+            <input id="description" type="text" name="description" value="{{ recipe.description }}">
+        </fieldset>
+        <fieldset>
+            <label for="ingredients">ingredients: </label>
+            <input id="ingredients" type="text" name="ingredients" value="{{ recipe.ingredients }}">
+        </fieldset>
+        <fieldset>
+            <label for="cook_time">Cook Time: </label>
+            <input id="cook_time" type="text" name="cook_time" value="{{ recipe.cook_time }}">
+        </fieldset>
+        <fieldset>
+            <label for="instructions">Instructions: </label>
+            <input id="instructions" type="text" name="instructions" value="{{ recipe.instructions }}">
+        </fieldset>
+        <fieldset>
+            <label for="category">Category: </label>
+            <select id="category" type="text" name="category">
+                {% for category in all_categories %}
+                <option {% if category.id == recipe.category_id %}selected{% endif %} value="{{ category.id }}">
+                    {{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+
+        {% if recipe.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT">
+            <input type="submit" value="Update" />
+        {% else %}
+            <input type="submit" value="Save" />
+        {% endif %}
+
+    </form>
+</body>
+
+</html>
