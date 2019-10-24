@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sweets Plus</title>
+  </head>
+  <body>
+    <h1>Categories</h1>
+{% comment %} category is singular because you are looking for a singular category {% endcomment %}
+    <ol>
+    {% for category in all_categories %}
+    <li>
+      <a href="{% url 'sweetsplusapp:category' category.id %}"> {{ category.name }} </a>
+    </li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>

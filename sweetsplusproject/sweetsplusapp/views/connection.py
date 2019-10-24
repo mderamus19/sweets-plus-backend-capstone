@@ -1,2 +1,2 @@
 class Connection:
-    db_path = "/Users/misty/workspace/python/sweetsplusproject/db.sqlite3"
+    db_path = "/Users/misty/workspace/python/sweets-plus/sweetsplusproject/db.sqlite3"
