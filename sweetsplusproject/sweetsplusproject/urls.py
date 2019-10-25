@@ -22,7 +22,5 @@ from sweetsplusapp.models import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('sweetsplusapp.urls')),
-    
-
-
+    path('users/', include('users.urls')),
 ]

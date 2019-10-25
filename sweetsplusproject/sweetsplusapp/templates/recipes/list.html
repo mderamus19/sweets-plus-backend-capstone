@@ -1,11 +1,13 @@
-{% load staticfiles %}
-<!DOCTYPE html>
+{% extends 'shared/base.html' %}
+{% block content %}
+
+{% comment %} <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Sweets Plus</title>
   </head>
-  <body>
+  <body> {% endcomment %}
     <h1>Recipes</h1>
 {% comment %} recipe is singular because you are looking for a singular recipe {% endcomment %}
     <ol>
@@ -17,5 +19,6 @@
     Cook time: {{ recipe.cook_time }}<br> Instructions: {{ recipe.instructions }}</li>
     {% endfor %}
     </ol>
-  </body>
-</html>
+  {% comment %} </body>
+</html> {% endcomment %}
+{% endblock content %}
