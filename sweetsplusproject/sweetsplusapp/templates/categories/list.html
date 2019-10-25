@@ -1,4 +1,6 @@
-{% load staticfiles %}
+{% extends 'shared/base.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +9,7 @@
   </head>
   <body>
     <h1>Categories</h1>
+    {% comment %} <a href="{% url 'sweetsplusapp:category_form' %}">Choose a Category</a> {% endcomment %}
 {% comment %} category is singular because you are looking for a singular category {% endcomment %}
     <ol>
     {% for category in all_categories %}
@@ -17,3 +20,4 @@
     </ol>
   </body>
 </html>
+{% endblock content%}

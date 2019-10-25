@@ -14,5 +14,4 @@ urlpatterns = [
     url(r'accounts/', include('django.contrib.auth.urls')),
     url(r'^logout/$', logout_user, name='logout'),
 
-
 ]

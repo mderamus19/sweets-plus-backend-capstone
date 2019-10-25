@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sweets Plus</title>
+
+    <style>
+        .navList {
+            list-style-type: none;
+            display: flex;
+            border: 1px solid lightgray;
+            padding: 1em;
+        }
+
+        .navList__route {
+            margin: 0 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="site-nav">
+        <p class="navList">
+            <a href="{% url 'sweetsplusapp:categories' %}">Categories</a>
+            <a href="{% url 'sweetsplusapp:recipes' %}">Add Recipe</a>
+            {% if user.is_authenticated %}
+                Hello, {{user.username}}.
+            {% else %}
+                <a href="{% url 'users:login' %}">Log In<a/>
+            {% endif %}
+            {% comment %} <a href="{% url 'sweetsplusapp:favorites' %}">Favorites</a> {% endcomment %}
+        </p>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
