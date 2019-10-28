@@ -1,24 +1,22 @@
-{% extends 'shared/base.html' %}
 {% block content %}
 
-{% comment %} <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Sweets Plus</title>
   </head>
-  <body> {% endcomment %}
+  <body>
     <h1>Recipes</h1>
 {% comment %} recipe is singular because you are looking for a singular recipe {% endcomment %}
     <ol>
     {% for recipe in all_recipes %}
     <li>
-      {% comment %} <a href="{% url 'sweetsplusapp:recipe' recipe.id %}"> </a> {% endcomment %}
       Name: {{ recipe.name }}<br>
     Description: {{ recipe.description }}<br> Ingredients: {{ recipe.ingredients }}<br>
     Cook time: {{ recipe.cook_time }}<br> Instructions: {{ recipe.instructions }}</li>
     {% endfor %}
     </ol>
-  {% comment %} </body>
-</html> {% endcomment %}
+  </body>
+</html>
 {% endblock content %}
