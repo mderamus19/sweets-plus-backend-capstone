@@ -33,9 +33,9 @@
                 <li class="navList__route"><a href="{% url 'sweetsplusapp:login' %}">Login</a></li>
             {% endif %}
             {% comment %} {% if user.is_authenticated %} {% endcomment %}
-                {% comment %} Hello, {{user.username}}. {% endcomment %}
             {% comment %} {% endif %} {% endcomment %}
         </ol>
+                 Hello, {{user.first_name}}!
     </nav>
 
     {% block content %}
