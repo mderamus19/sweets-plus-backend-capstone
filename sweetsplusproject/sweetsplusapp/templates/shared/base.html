@@ -23,16 +23,19 @@
 <body>
 
     <nav id="site-nav">
-        <p class="navList">
-            <a href="{% url 'sweetsplusapp:categories' %}">Categories</a>
-            <a href="{% url 'sweetsplusapp:recipes' %}">Add Recipe</a>
-            {% if user.is_authenticated %}
-                Hello, {{user.username}}.
+        <ol class="navList">
+            <li class="navList__route"><a href="{% url 'sweetsplusapp:categories' %}">Categories</a>
+            <li class="navList__route"><a href="{% url 'sweetsplusapp:recipes' %}">Add Recipe</a>
+            {% comment %} <li class="navList__route"><a href="{% url 'sweetsplusapp:favorites' %}">Favorites</a> {% endcomment %}
+            {% if request.user.is_authenticated %}
+                <li class="navList__route"><a href="{% url 'sweetsplusapp:logout' %}">Logout</a></li>
             {% else %}
-                <a href="{% url 'users:login' %}">Log In<a/>
+                <li class="navList__route"><a href="{% url 'sweetsplusapp:login' %}">Login</a></li>
             {% endif %}
-            {% comment %} <a href="{% url 'sweetsplusapp:favorites' %}">Favorites</a> {% endcomment %}
-        </p>
+            {% comment %} {% if user.is_authenticated %} {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
+        </ol>
+                 Hello, {{user.first_name}}!
     </nav>
 
     {% block content %}
