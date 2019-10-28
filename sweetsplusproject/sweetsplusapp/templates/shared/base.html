@@ -25,15 +25,13 @@
     <nav id="site-nav">
         <ol class="navList">
             <li class="navList__route"><a href="{% url 'sweetsplusapp:categories' %}">Categories</a>
-            <li class="navList__route"><a href="{% url 'sweetsplusapp:recipes' %}">Add Recipe</a>
-            {% comment %} <li class="navList__route"><a href="{% url 'sweetsplusapp:favorites' %}">Favorites</a> {% endcomment %}
+            <li class="navList__route"><a href="{% url 'sweetsplusapp:recipe' %}">Add Recipe</a>
+            <li class="navList__route"><a href="{% url 'sweetsplusapp:favorites' %}">Favorites</a>
             {% if request.user.is_authenticated %}
                 <li class="navList__route"><a href="{% url 'sweetsplusapp:logout' %}">Logout</a></li>
             {% else %}
                 <li class="navList__route"><a href="{% url 'sweetsplusapp:login' %}">Login</a></li>
             {% endif %}
-            {% comment %} {% if user.is_authenticated %} {% endcomment %}
-            {% comment %} {% endif %} {% endcomment %}
         </ol>
                  Hello, {{user.first_name}}!
     </nav>
