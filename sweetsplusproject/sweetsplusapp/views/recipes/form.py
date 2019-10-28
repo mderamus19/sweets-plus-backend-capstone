@@ -1,9 +1,10 @@
 import sqlite3
 from django.shortcuts import render
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from sweetsplusapp.models import Category
 from sweetsplusapp.models import Recipe
 from sweetsplusapp.models import model_factory
+from .detail import get_recipe
 from ..connection import Connection
 
 
@@ -21,7 +22,7 @@ def get_categories():
 
         return db_cursor.fetchall()
 
-# @login_required
+@login_required
 def recipe_form(request):
     if request.method == 'GET':
         categories = get_categories()
@@ -32,12 +33,11 @@ def recipe_form(request):
 
         return render(request, template, context)
 
-# @login_required
+@login_required
 def recipe_edit_form(request, recipe_id):
     if request.method == 'GET':
         recipe = get_recipe(recipe_id)
         categories = get_categories()
-
         template = 'recipes/form.html'
         context = {
             'recipe': recipe,

@@ -9,9 +9,14 @@ urlpatterns = [
     url(r'^$',home, name='home'),
     url(r'^categories$',list_categories, name='categories'),
     path(r'^categories/<int:category_id>/', category_details, name='category'),
+
     url(r'^favorites$',list_recipes, name='favorites'),
+
     url(r'^recipes$',list_recipes, name='recipes'),
     url(r'^recipes/form$',recipe_form, name='recipe'),
+    path('recipe/<int:recipe_id>/', recipe_details, name='recipe'),
+    url(r'^recipe/(?P<recipe_id>[0-9]+)/form$', recipe_edit_form, name='recipe_edit_form'),
+
     url(r'^register/$',register_user, name='register'),
     url(r'accounts/', include('django.contrib.auth.urls')),
     url(r'login/', auth_views.LoginView.as_view()),
