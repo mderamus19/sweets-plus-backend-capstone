@@ -2,12 +2,12 @@ import sqlite3
 from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import redirect
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from sweetsplusapp.models import Recipe
 from sweetsplusapp.models import model_factory
 from ..connection import Connection
 
-# @login_required
+@login_required
 def list_recipes(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
@@ -51,7 +51,7 @@ def list_recipes(request):
                 category_id,
                 cook_id
             )
-            VALUES (?)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
             # this is the second argument which is the data dictionary
             (form_data['name'], form_data['description'],
