@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from sweetsplusapp.models import Recipe
+from sweetsplusapp.models import Recipe, Category
 from sweetsplusapp.models import model_factory
 from ..connection import Connection
 
@@ -15,21 +15,33 @@ def list_recipes(request):
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
-            select
-                r.id,
-                r.name,
-                r.description,
-                r.ingredients,
-                r.cook_time,
-                r.instructions,
-                r.category_id,
-                r.cook_id
+            SELECT
+            r.id,
+            r.name,
+            r.description,
+            r.ingredients,
+            r.cook_time,
+            r.instructions,
+            r.category_id,
+            ct.name category_name,
+            ct.id,
+            r.cook_id
             from sweetsplusapp_recipe r
+            JOIN sweetsplusapp_category ct on r.category_id = ct.id
+            WHERE ct.id = ?
             """)
-            
-            all_recipes = db_cursor.fetchall()
 
-        template_name = 'recipes/list.html'
+            all_recipes = []
+            dataset = db_cursor.fetchall()
+
+            for row in dataset:
+                recipe = Recipe()
+                recipe.id = row["id"]
+                recipe.name = row["name"]
+                recipe.category_id = row["category_id"]
+                all_recipes.append(recipe)
+
+        template_name = 'categories/detail.html'
         return render(request, template_name, {'all_recipes': all_recipes})
 
         # return render(request, template, context)

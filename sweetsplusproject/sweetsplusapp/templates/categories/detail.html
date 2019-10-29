@@ -10,14 +10,14 @@
 <body>
 
     <section id="category-details">
-        <h1>Category Name: {{ category.category_name }} Category id: {{ category.id }}</h1>
+        <h1>Category Name: {{ category.name }} Category id: {{ category.id }}</h1>
         <h1>Recipe Name: </h1>
         <ol>
-        {% comment %} {% for recipe in all_recipes %} {% endcomment %}
-        <li>
-            <a href="{% url 'sweetsplusapp:recipe' category.id %}"> {{ category.recipe_name }}</a>
-        </li>
-        {% comment %} {% endfor %} {% endcomment %}
+        {% for recipe in category.recipes.all %}
+            <li>
+                <a href="{% url 'sweetsplusapp:recipe' recipe.id %}"> {{ recipe.name }}</a>
+            </li>
+        {% endfor %}
         </ol>
 
     </section>
@@ -36,5 +36,4 @@
     </section>
 
 </body>
-
 </html>
