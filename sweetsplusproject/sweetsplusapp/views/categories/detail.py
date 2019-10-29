@@ -2,21 +2,30 @@ import sqlite3
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from sweetsplusapp.models import Category
+from sweetsplusapp.models import Category, Recipe
 from sweetsplusapp.models import model_factory
 from ..connection import Connection
 
 
 def get_category(category_id):
     with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = model_factory(Category)
+        conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
         SELECT
+            r.id,
+            r.name recipe_name,
+            r.description,
+            r.ingredients,
+            r.cook_time,
+            r.instructions,
+            r.category_id,
+            ct.name category_name,
             ct.id,
-            ct.name
-        FROM sweetsplusapp_category ct
+            r.cook_id
+            from sweetsplusapp_recipe r
+            JOIN sweetsplusapp_category ct on r.category_id = ct.id
         WHERE ct.id = ?
         """, (category_id,))
 

@@ -26,7 +26,7 @@ def list_recipes(request):
                 r.cook_id
             from sweetsplusapp_recipe r
             """)
-
+            
             all_recipes = db_cursor.fetchall()
 
         template_name = 'recipes/list.html'
