@@ -1,4 +1,7 @@
-{% load staticfiles %}
+{% extends 'shared/base.html' %}
+{% block content %}
+
+{% comment %} {% load staticfiles %} {% endcomment %}
 <!DOCTYPE html>
 <html>
 
@@ -11,21 +14,28 @@
 
     <section id="recipe-details">
         <h1>{{ recipe.name }}</h1>
+        Description: {{ recipe.description }}<br> Ingredients: {{ recipe.ingredients }}<br>
+        Cook time: {{ recipe.cook_time }}<br> Instructions: {{ recipe.instructions }}
     </section>
 
     <section id="recipe-actions" style="display:flex;">
+
+        <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="GET">
+            {% csrf_token %}
+            <button>Add To Favorites</button>
+        </form>
+        <form action="{% url 'sweetsplusapp:recipe_edit_form' recipe.id %}" method="GET">
+            {% csrf_token %}
+            <button>Edit Recipe</button>
+        </form>
         <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
-            <button>Delete</button>
-        </form>
-
-        <form action="{% url 'sweetsplusapp:recipe_edit_form' recipe.id %}" method="GET">
-            {% csrf_token %}
-            <button>Edit</button>
+            <button>Delete Recipe</button>
         </form>
     </section>
 
 </body>
 
 </html>
+{% endblock content %}

@@ -10,20 +10,29 @@
 <body>
 
     <section id="category-details">
-        <h1>{{ category.name }}</h1>
+        <h1>Category Name: {{ category.category_name }} Category id: {{ category.id }}</h1>
+        <h1>Recipe Name: </h1>
+        <ol>
+        {% comment %} {% for recipe in all_recipes %} {% endcomment %}
+        <li>
+            <a href="{% url 'sweetsplusapp:recipe' category.id %}"> {{ category.recipe_name }}</a>
+        </li>
+        {% comment %} {% endfor %} {% endcomment %}
+        </ol>
+
     </section>
 
-    <section id="category-actions" style="display:flex;">
+    {% comment %} <section id="category-actions" style="display:flex;">
         <form action="{% url 'sweetsplusapp:category' category.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
             <button>Delete</button>
-        </form>
+        </form> {% endcomment %}
 
-        <form action="{% url 'sweetsplusapp:category_edit_form' category.id %}" method="GET">
-            {% csrf_token %}
-            <button>Edit</button>
-        </form>
+        {% comment %} <form action="{% url 'sweetsplusapp:category_edit_form' category.id %}" method="GET"> {% endcomment %}
+            {% comment %} {% csrf_token %} {% endcomment %}
+            {% comment %} <button>Edit</button> {% endcomment %}
+        {% comment %} </form> {% endcomment %}
     </section>
 
 </body>
