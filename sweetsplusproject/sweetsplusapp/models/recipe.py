@@ -15,7 +15,7 @@ class Recipe(models.Model):
 
     """add id's to your db tables"""
     cook = models.ForeignKey(Cook, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING,related_name='recipes')
 
     class Meta:
         verbose_name = ("recipe")

@@ -3,25 +3,32 @@
 # from django.urls import reverse
 # from django.shortcuts import redirect
 # # from django.contrib.auth.decorators import login_required
-# from sweetsplusapp.models import Category
+# from sweetsplusapp.models import Category, Recipe
 # from sweetsplusapp.models import model_factory
 # from ..connection import Connection
 
 # # @login_required
-# def list_categories(request):
+# def list_favorites(request):
 #     if request.method == 'GET':
 #         with sqlite3.connect(Connection.db_path) as conn:
 #             conn.row_factory = sqlite3.Row
 #             db_cursor = conn.cursor()
 
 #             db_cursor.execute("""
-#             select
-#                 ct.id,
-#                 ct.name
-#             from sweetsplusapp_category ct
-#             """)
+#             SELECT
+#                 r.id,
+#                 r.name,
+#                 r.cook_id,
+#                 r.category_id,
+#                 f.recipe_id,
+#                 f.id favorite_id,
+#                 f.cook_id
+#             from sweetsplusapp_recipe r
+#             JOIN sweetsplusapp_favorite f on r.category_id = f.id
+#             WHERE f.id = ?
+#               """)
 
-#             all_categories = db_cursor.fetchall()
+#             all_recipes = db_cursor.fetchall()
 
 #         template_name = 'categories/list.html'
 #         return render(request, template_name, {'all_categories': all_categories})
