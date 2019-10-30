@@ -23,37 +23,36 @@ def get_favorite(favorite_id):
                 f.cook_id
             from sweetsplusapp_recipe r
             JOIN sweetsplusapp_favorite f
-        WHERE ct.id = ?
+        WHERE r.id = ?
         """, (favorite_id,))
 
         return db_cursor.fetchone()
 
-@login_required
-def category_details(request, category_id, pk=None):
-    if request.method == 'GET':
-        # category = get_category(category_id)
-        category = Category.objects.get(pk=category_id)
-        template_name = 'categories/detail.html'
-        return render(request, template_name, {'category': category})
+# @login_required
+# def favorite_details(request, favorite_id):
+#     if request.method == 'GET':
+#         favorite = get_favorite(favorite_id)
+#         template_name = 'favorites/detail.html'
+#         return render(request, template_name, {'favorite': favorite})
 
-    elif request.method == 'POST':
-        form_data = request.POST
+#     elif request.method == 'POST':
+#         form_data = request.POST
 
-        # Check if this POST is for editing a category
-        if (
-            "actual_method" in form_data
-            and form_data["actual_method"] == "PUT"
-        ):
-            with sqlite3.connect(Connection.db_path) as conn:
-                db_cursor = conn.cursor()
+#         # Check if this POST is for editing a category
+#         if (
+#             "actual_method" in form_data
+#             and form_data["actual_method"] == "PUT"
+#         ):
+#             with sqlite3.connect(Connection.db_path) as conn:
+#                 db_cursor = conn.cursor()
 
-                db_cursor.execute("""
-                UPDATE sweetsplusapp_category
-                SET name = ?
-                WHERE id = ?
-                """,
-                (
-                    form_data['name'], category_id,
-                ))
+#                 db_cursor.execute("""
+#                 UPDATE sweetsplusapp_category
+#                 SET name = ?
+#                 WHERE id = ?
+#                 """,
+#                 (
+#                     form_data['name'], category_id,
+#                 ))
 
-            return redirect(reverse('sweetsplusapp:categories'))
+#             return redirect(reverse('sweetsplusapp:categories'))

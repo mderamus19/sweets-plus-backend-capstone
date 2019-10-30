@@ -24,9 +24,8 @@ def list_favorites(request):
                 f.id favorite_id,
                 f.cook_id
             from sweetsplusapp_recipe r
-            JOIN sweetsplusapp_favorite f on r.category_id = f.id
-            WHERE f.id = ?
-              """)
+            JOIN sweetsplusapp_favorite f
+            """)
 
             all_favorites = db_cursor.fetchall()
 
@@ -44,7 +43,7 @@ def list_favorites(request):
             db_cursor.execute("""
             INSERT INTO sweetsplusapp_favorites
             (
-                name
+                r.id
             )
             VALUES (?)
             """,

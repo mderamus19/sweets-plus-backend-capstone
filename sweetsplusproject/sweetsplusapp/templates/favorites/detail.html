@@ -4,21 +4,21 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Category</title>
+    <title>Favorite</title>
 </head>
 
 <body>
 
-    <section id="category-details">
-        <h1>Category Name: {{ category.name }} Category id: {{ category.id }}</h1>
-        <h1>Recipe Name: </h1>
+    <section id="favorite-details">
+        <h1>Favorite Recipes: {{ recipe.name }}</h1>
+        {% comment %} <h1>Recipe Name: </h1>
         <ol>
         {% for recipe in category.recipes.all %}
             <li>
                 <a href="{% url 'sweetsplusapp:recipe' recipe.id %}"> {{ recipe.name }}</a>
             </li>
         {% endfor %}
-        </ol>
+        </ol> {% endcomment %}
 
     </section>
 
