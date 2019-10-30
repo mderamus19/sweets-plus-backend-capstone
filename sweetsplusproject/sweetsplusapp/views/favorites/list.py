@@ -27,10 +27,10 @@ def list_favorites(request):
             JOIN sweetsplusapp_favorite f
             """)
 
-            all_recipes = db_cursor.fetchall()
+            all_favorites = db_cursor.fetchall()
 
         template_name = 'favorites/list.html'
-        return render(request, template_name, {'all_recipes': all_recipes})
+        return render(request, template_name, {'all_favorites': all_favorites})
 
         # return render(request, template, context)
     elif request.method == 'POST':

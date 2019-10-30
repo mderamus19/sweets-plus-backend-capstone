@@ -31,9 +31,15 @@ def get_recipe(recipe_id):
 @login_required
 def recipe_details(request, recipe_id):
     if request.method == 'GET':
-        recipe = get_recipe(recipe_id)
+        cook = Cook.objects.get(user = request.user)
+        recipe = Recipe.objects.get(pk=recipe_id)
+        is_cook = False
+        if recipe.cook == cook:
+            is_cook = True
         template_name = 'recipes/detail.html'
-        return render(request, template_name, {'recipe': recipe})
+        return render(request, template_name, {'recipe': recipe,
+        'is_cook':is_cook
+        })
 
     elif request.method == 'POST':
         form_data = request.POST
@@ -65,7 +71,7 @@ def recipe_details(request, recipe_id):
                     request.user.cook.id, recipe_id,
                 ))
 
-            return redirect(reverse('sweetsplusapp:recipes'))
+            return redirect(reverse('sweetsplusapp:recipe'))
 
         # Check if this POST is for deleting a recipe
         if (
@@ -80,4 +86,4 @@ def recipe_details(request, recipe_id):
                     WHERE id = ?
                 """, (recipe_id,))
 
-            return redirect(reverse('sweetsplusapp:recipes'))
+            return redirect(reverse('sweetsplusapp:recipe'))

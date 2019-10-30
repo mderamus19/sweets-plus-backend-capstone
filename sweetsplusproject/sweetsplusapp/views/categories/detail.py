@@ -34,7 +34,6 @@ def get_category(category_id):
 @login_required
 def category_details(request, category_id, pk=None):
     if request.method == 'GET':
-        # category = get_category(category_id)
         category = Category.objects.get(pk=category_id)
         template_name = 'categories/detail.html'
         return render(request, template_name, {'category': category})

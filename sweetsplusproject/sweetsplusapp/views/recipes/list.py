@@ -11,6 +11,7 @@ from ..connection import Connection
 def list_recipes(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
+            user = request.user
             conn.row_factory = sqlite3.Row
             db_cursor = conn.cursor()
 
@@ -25,12 +26,17 @@ def list_recipes(request):
                 r.category_id,
                 r.cook_id
             from sweetsplusapp_recipe r
-            """)
-    
+            where r.cook_id = ?
+            """,(user.id,))
+
             all_recipes = db_cursor.fetchall()
 
         template_name = 'recipes/list.html'
-        return render(request, template_name, {'all_recipes': all_recipes})
+        return render(request, template_name, {
+            'all_recipes': all_recipes,
+             'cook_id':user.id,
+
+        })
 
         # return render(request, template, context)
     elif request.method == 'POST':
