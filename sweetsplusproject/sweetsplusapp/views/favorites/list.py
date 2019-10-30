@@ -24,14 +24,13 @@ def list_favorites(request):
                 f.id favorite_id,
                 f.cook_id
             from sweetsplusapp_recipe r
-            JOIN sweetsplusapp_favorite f on r.category_id = f.id
-            WHERE f.id = ?
-              """)
+            JOIN sweetsplusapp_favorite f
+            """)
 
-            all_favorites = db_cursor.fetchall()
+            all_recipes = db_cursor.fetchall()
 
         template_name = 'favorites/list.html'
-        return render(request, template_name, {'all_favorites': all_favorites})
+        return render(request, template_name, {'all_recipes': all_recipes})
 
         # return render(request, template, context)
     elif request.method == 'POST':
@@ -44,7 +43,7 @@ def list_favorites(request):
             db_cursor.execute("""
             INSERT INTO sweetsplusapp_favorites
             (
-                name
+                r.id
             )
             VALUES (?)
             """,

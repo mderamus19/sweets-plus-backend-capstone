@@ -48,7 +48,7 @@ def recipe_details(request, recipe_id):
 
                 db_cursor.execute("""
                 UPDATE sweetsplusapp_recipe
-                SET id = ?,
+                SET
                     name = ?,
                     description = ?,
                     ingredients = ?,
@@ -61,8 +61,8 @@ def recipe_details(request, recipe_id):
                 (
                     form_data['name'], form_data['description'],
                     form_data['ingredients'], form_data['cook_time'],
-                    form_data["instructions"], form_data["category"],
-                    form_data["cook"], recipe_id,
+                    form_data['instructions'], form_data['category'],
+                    request.user.cook.id, recipe_id,
                 ))
 
             return redirect(reverse('sweetsplusapp:recipes'))
