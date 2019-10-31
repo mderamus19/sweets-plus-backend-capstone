@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^favorites$',list_favorites, name='favorites'),
 
     url(r'^recipes$',list_recipes, name='recipes'),
-    url(r'^recipes/form$',recipe_form, name='recipe'),
+    url(r'^recipes/form$',recipe_form, name='recipe_form'),
     path('recipe/<int:recipe_id>/', recipe_details, name='recipe'),
     url(r'^recipe/(?P<recipe_id>[0-9]+)/form$', recipe_edit_form, name='recipe_edit_form'),
 

@@ -1,4 +1,6 @@
-{% load staticfiles %}
+{% extends 'shared/base.html' %}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 
@@ -10,8 +12,8 @@
 <body>
 
     <section id="category-details">
-        <h1>Category Name: {{ category.name }} Category id: {{ category.id }}</h1>
-        <h1>Recipe Name: </h1>
+        <h1>{{ category.name }}</h1>
+        <h1>Cake Recipe Names: </h1>
         <ol>
         {% for recipe in category.recipes.all %}
             <li>
@@ -24,3 +26,4 @@
 
 </body>
 </html>
+{% endblock content %}

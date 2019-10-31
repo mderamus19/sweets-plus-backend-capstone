@@ -14,8 +14,8 @@
     <ol>
     {% for favorite in all_favorites %}
     <li>
-      {% comment %} <a href="{% url 'sweetsplusapp:recipes' recipe.id %}"> {{ recipe.name }} </a> {% endcomment %}
-    {{ recipe.name }}
+    <a href="{% url 'sweetsplusapp:recipe' favorite.recipe_id %}">{{favorite.recipe.name }}</a>
+       {% comment %} <a href="{% url 'sweetsplusapp:recipe' favorite.recipe.id %}"> {{ favorite.recipe.name }} </a> {% endcomment %}
    </li>
     {% endfor %}
     </ol>

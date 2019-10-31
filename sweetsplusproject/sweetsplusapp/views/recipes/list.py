@@ -65,4 +65,4 @@ def list_recipes(request):
                 form_data["instructions"], form_data["category"], request.user.cook.id))
 
 # this is now a GET request from the redirect
-        return redirect(reverse('sweetsplusapp:recipes'))
+        return redirect(reverse('sweetsplusapp:categories'))

@@ -2,7 +2,7 @@ import sqlite3
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from sweetsplusapp.models import Category, Recipe, Cook
+from sweetsplusapp.models import Category, Recipe, Cook, Favorite
 from sweetsplusapp.models import model_factory
 from ..connection import Connection
 
@@ -38,7 +38,7 @@ def recipe_details(request, recipe_id):
             is_cook = True
         template_name = 'recipes/detail.html'
         return render(request, template_name, {'recipe': recipe,
-        'is_cook':is_cook
+        'is_cook':is_cook,
         })
 
     elif request.method == 'POST':
@@ -71,7 +71,7 @@ def recipe_details(request, recipe_id):
                     request.user.cook.id, recipe_id,
                 ))
 
-            return redirect(reverse('sweetsplusapp:recipe'))
+            return redirect(reverse('sweetsplusapp:categories'))
 
         # Check if this POST is for deleting a recipe
         if (
@@ -86,4 +86,4 @@ def recipe_details(request, recipe_id):
                     WHERE id = ?
                 """, (recipe_id,))
 
-            return redirect(reverse('sweetsplusapp:recipe'))
+            return redirect(reverse('sweetsplusapp:categories'))

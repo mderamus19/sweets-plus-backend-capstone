@@ -11,44 +11,58 @@ from ..connection import Connection
 def list_favorites(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
-            conn.row_factory = sqlite3.Row
+            conn.row_factory = model_factory(Favorite)
+            user = request.user
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
             SELECT
-                r.id,
-                r.name,
-                r.cook_id,
-                r.category_id,
+                f.id,
                 f.recipe_id,
-                f.id favorite_id,
                 f.cook_id
-            from sweetsplusapp_recipe r
-            JOIN sweetsplusapp_favorite f
-            """)
+            from sweetsplusapp_favorite f
+            WHERE f.cook_id = ?
+            """, (user.id,))
 
-            all_favorites = db_cursor.fetchall()
+        all_favorite_recipes = db_cursor.fetchall()
 
         template_name = 'favorites/list.html'
-        return render(request, template_name, {'all_favorites': all_favorites})
-
-        # return render(request, template, context)
+        context = {'all_favorites': all_favorite_recipes,}
+        return render(request, template_name, context)
+#POST data submitted; process data
     elif request.method == 'POST':
         form_data = request.POST
 
         with sqlite3.connect(Connection.db_path) as conn:
+            user = request.user
             db_cursor = conn.cursor()
 
-    # ???are placeholders to validate parameters
+    # ??? are placeholders to validate parameters
             db_cursor.execute("""
-            INSERT INTO sweetsplusapp_favorites
+            INSERT INTO sweetsplusapp_favorite
             (
-                r.id
+                cook_id,
+                recipe_id
             )
-            VALUES (?)
+            VALUES (?, ?)
             """,
             # this is the second argument which is the data dictionary
-            (form_data['name']))
+            (user.id, form_data['recipe_id']))
 
 # this is now a GET request from the redirect
         return redirect(reverse('sweetsplusapp:favorites'))
+
+# # Check if this POST is for deleting a recipe
+#         if (
+#             "actual_method" in form_data
+#             and form_data["actual_method"] == "DELETE"
+#         ):
+#             with sqlite3.connect(Connection.db_path) as conn:
+#                 db_cursor = conn.cursor()
+
+#                 db_cursor.execute("""
+#                     DELETE FROM sweetsplusapp_favorite
+#                     WHERE id = ?
+#                 """, (favorite_id,))
+
+#             return redirect(reverse('sweetsplusapp:favorites'))

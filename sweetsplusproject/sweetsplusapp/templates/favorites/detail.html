@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% comment %} {% load staticfiles %}
 <!DOCTYPE html>
 <html>
 
@@ -11,16 +11,16 @@
 
     <section id="favorite-details">
         <h1>Favorite Recipes: {{ recipe.name }}</h1>
-        {% comment %} <h1>Recipe Name: </h1>
+        <h1>Recipe Name: </h1>
         <ol>
         {% for recipe in category.recipes.all %}
             <li>
                 <a href="{% url 'sweetsplusapp:recipe' recipe.id %}"> {{ recipe.name }}</a>
             </li>
         {% endfor %}
-        </ol> {% endcomment %}
+        </ol>
 
     </section>
 
 </body>
-</html>
+</html> {% endcomment %}
