@@ -31,15 +31,18 @@
             {% csrf_token %}
             <button>Edit Recipe</button>
         </form>
-        {% comment %} {% if cook_id == user.id %} {% endcomment %}
         <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
             <button>Delete Recipe</button>
         </form>
+        <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="REMOVE_FAV">
+            <button>Undo Favorite</button>
+        </form>
         {% endif %}
     </section>
-        {% comment %} {% endif %} {% endcomment %}
 
 </body>
 

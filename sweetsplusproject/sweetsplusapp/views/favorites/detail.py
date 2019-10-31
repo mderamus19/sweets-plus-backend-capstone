@@ -1,32 +1,32 @@
-import sqlite3
-from django.urls import reverse
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from sweetsplusapp.models import Category, Recipe
-from sweetsplusapp.models import model_factory
-from ..connection import Connection
+# import sqlite3
+# from django.urls import reverse
+# from django.shortcuts import render, redirect
+# from django.contrib.auth.decorators import login_required
+# from sweetsplusapp.models import Category, Recipe
+# from sweetsplusapp.models import model_factory
+# from ..connection import Connection
 
 
-def get_favorite(favorite_id):
-    with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = sqlite3.Row
-        db_cursor = conn.cursor()
+# def get_favorite(favorite_id):
+#     with sqlite3.connect(Connection.db_path) as conn:
+#         conn.row_factory = sqlite3.Row
+#         db_cursor = conn.cursor()
 
-        db_cursor.execute("""
-        SELECT
-                r.id,
-                r.name,
-                r.cook_id,
-                r.category_id,
-                f.recipe_id,
-                f.id favorite_id,
-                f.cook_id
-            from sweetsplusapp_recipe r
-            JOIN sweetsplusapp_favorite f
-        WHERE r.id = ?
-        """, (favorite_id,))
+#         db_cursor.execute("""
+#         SELECT
+#                 r.id,
+#                 r.name,
+#                 r.cook_id,
+#                 r.category_id,
+#                 f.recipe_id,
+#                 f.id favorite_id,
+#                 f.cook_id
+#             from sweetsplusapp_recipe r
+#             JOIN sweetsplusapp_favorite f
+#         WHERE r.id = ?
+#         """, (favorite_id,))
 
-        return db_cursor.fetchone()
+#         return db_cursor.fetchone()
 
 # @login_required
 # def favorite_details(request, favorite_id):

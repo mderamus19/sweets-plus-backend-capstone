@@ -27,28 +27,43 @@ def list_favorites(request):
             JOIN sweetsplusapp_favorite f
             """)
 
-            all_favorites = db_cursor.fetchall()
+            all_favorite_recipes = db_cursor.fetchall()
 
         template_name = 'favorites/list.html'
-        return render(request, template_name, {'all_favorites': all_favorites})
-
-        # return render(request, template, context)
+        return render(request, template_name, {'all_favorites': all_favorite_recipes})
+#POST data submitted; process data
     elif request.method == 'POST':
         form_data = request.POST
 
         with sqlite3.connect(Connection.db_path) as conn:
             db_cursor = conn.cursor()
 
-    # ???are placeholders to validate parameters
+    # ??? are placeholders to validate parameters
             db_cursor.execute("""
             INSERT INTO sweetsplusapp_favorites
             (
-                r.id
+                r.name,
+                f.cook_id
             )
-            VALUES (?)
+            VALUES (?, ?)
             """,
             # this is the second argument which is the data dictionary
-            (form_data['name']))
+            (form_data['name'], request.user.cook.id))
 
 # this is now a GET request from the redirect
         return redirect(reverse('sweetsplusapp:favorites'))
+
+# Check if this POST is for deleting a recipe
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == "DELETE"
+        ):
+            with sqlite3.connect(Connection.db_path) as conn:
+                db_cursor = conn.cursor()
+
+                db_cursor.execute("""
+                    DELETE FROM sweetsplusapp_favorite
+                    WHERE id = ?
+                """, (favorite_id,))
+
+            return redirect(reverse('sweetsplusapp:favorites'))
