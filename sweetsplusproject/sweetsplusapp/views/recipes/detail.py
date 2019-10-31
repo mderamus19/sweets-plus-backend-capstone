@@ -71,7 +71,7 @@ def recipe_details(request, recipe_id):
                     request.user.cook.id, recipe_id,
                 ))
 
-            return redirect(reverse('sweetsplusapp:recipe'))
+            return redirect(reverse('sweetsplusapp:categories'))
 
         # Check if this POST is for deleting a recipe
         if (
@@ -86,4 +86,4 @@ def recipe_details(request, recipe_id):
                     WHERE id = ?
                 """, (recipe_id,))
 
-            return redirect(reverse('sweetsplusapp:recipe'))
+            return redirect(reverse('sweetsplusapp:categories'))

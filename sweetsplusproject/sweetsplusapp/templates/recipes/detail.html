@@ -1,7 +1,6 @@
 {% extends 'shared/base.html' %}
 {% block content %}
 
-{% comment %} {% load staticfiles %} {% endcomment %}
 <!DOCTYPE html>
 <html>
 
@@ -20,9 +19,10 @@
 
     <section id="recipe-actions" style="display:flex;">
 
-        <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="GET">
+        <form action="{% url 'sweetsplusapp:favorites' %}" method="POST">
             {% csrf_token %}
-            <button>Add To Favorites</button>
+            <input type="hidden" name="recipe_id" id="recipe_id" value="{{recipe.id}}">
+             <button value="{{recipe.id}}" type = "submit">Add To Favorites</button>
         </form>
         {% comment %} give user access to only edit or delete their recipe {% endcomment %}
 
@@ -35,11 +35,6 @@
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
             <button>Delete Recipe</button>
-        </form>
-        <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="actual_method" value="REMOVE_FAV">
-            <button>Undo Favorite</button>
         </form>
         {% endif %}
     </section>
