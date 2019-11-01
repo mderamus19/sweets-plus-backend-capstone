@@ -29,6 +29,7 @@ def list_favorites(request):
         template_name = 'favorites/list.html'
         context = {'all_favorites': all_favorite_recipes,}
         return render(request, template_name, context)
+
 #POST data submitted; process data
     elif request.method == 'POST':
         form_data = request.POST
@@ -52,17 +53,3 @@ def list_favorites(request):
 # this is now a GET request from the redirect
         return redirect(reverse('sweetsplusapp:favorites'))
 
-# # Check if this POST is for deleting a recipe
-#         if (
-#             "actual_method" in form_data
-#             and form_data["actual_method"] == "DELETE"
-#         ):
-#             with sqlite3.connect(Connection.db_path) as conn:
-#                 db_cursor = conn.cursor()
-
-#                 db_cursor.execute("""
-#                     DELETE FROM sweetsplusapp_favorite
-#                     WHERE id = ?
-#                 """, (favorite_id,))
-
-#             return redirect(reverse('sweetsplusapp:favorites'))
