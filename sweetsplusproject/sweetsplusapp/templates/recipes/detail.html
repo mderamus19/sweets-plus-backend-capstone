@@ -24,6 +24,11 @@
             <input type="hidden" name="recipe_id" id="recipe_id" value="{{recipe.id}}">
              <button value="{{recipe.id}}" type = "submit">Add To Favorites</button>
         </form>
+        <form action="{% url 'sweetsplusapp:favorite' recipe.id  %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+             <button>Remove from Favorites</button>
+        </form>
         {% comment %} give user access to only edit or delete their recipe {% endcomment %}
 
         {% if is_cook %}

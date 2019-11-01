@@ -8,8 +8,9 @@ app_name = "sweetsplusapp"
 urlpatterns = [
     url(r'^$',home, name='home'),
     url(r'^categories$',list_categories, name='categories'),
-    path(r'^categories/<int:category_id>/', category_details, name='category'),
+    path('categories/<int:category_id>/', category_details, name='category'),
 
+    path('favorites/<int:recipe_id>/', favorite, name='favorite'),
     url(r'^favorites$',list_favorites, name='favorites'),
 
     url(r'^recipes$',list_recipes, name='recipes'),

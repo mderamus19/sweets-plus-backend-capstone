@@ -26,7 +26,6 @@ def list_categories(request):
         template_name = 'categories/list.html'
         return render(request, template_name, {'all_categories': all_categories})
 
-        # return render(request, template, context)
     elif request.method == 'POST':
         form_data = request.POST
 
