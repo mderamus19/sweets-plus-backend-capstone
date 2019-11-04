@@ -1,7 +1,16 @@
 {% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+{% endblock %}
 
 {% block content %}
   <h2>Login</h2>
+{% load static %}
+
+  <img src ="{% static 'images/sweets.png' %}" class="login"/>
+
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

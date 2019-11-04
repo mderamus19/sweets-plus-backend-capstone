@@ -1,0 +1,22 @@
+.cake {
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    z-index:-1;
+    opacity: .7;
+}
+.assorted {
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    z-index:-1;
+    opacity: .7;
+}
+.cake_category {
+    color: black;
+    margin-left: 20px;
+    margin-top: 70px;
+}
+a.cake_category {
+    color: blue;
+}

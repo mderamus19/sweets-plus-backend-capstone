@@ -1,0 +1,17 @@
+.login {
+    /* background:skyblue; */
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    z-index:-1;
+    opacity: .7;
+}
+/* .jumbotron {
+    margin-top:10px;
+    background-size:cover;
+     text-align: center;
+     font-family: fancy;
+     height: 5em;
+     padding: 0;
+
+} */

@@ -1,5 +1,8 @@
 {% extends 'shared/base.html' %}
-
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/category.css' %}" />
+{% endblock %}
 {% block content %}
 
 <!DOCTYPE html>
@@ -9,6 +12,9 @@
     <title>Sweets Plus</title>
   </head>
   <body>
+  {% load static %}
+      <img src ="{% static 'images/assorted.jpg' %}" class = "assorted">
+
     <h1>Categories</h1>
 {% comment %} category is singular because you are looking for a singular category {% endcomment %}
     <ol>
