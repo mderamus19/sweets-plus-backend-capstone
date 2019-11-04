@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sweetsplusapp',
+    #Third party apps for styling
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

@@ -1,17 +1,21 @@
 {% extends 'shared/base.html' %}
-
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/category.css' %}" />
+{% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Category</title>
-</head>
+{% comment %} <!DOCTYPE html> {% endcomment %}
+{% comment %} <html> {% endcomment %}
+{% comment %} <head> {% endcomment %}
+    {% comment %} <meta charset="utf-8"> {% endcomment %}
+    {% comment %} <title>Category</title> {% endcomment %}
+{% comment %} </head> {% endcomment %}
 
 <body>
-
-    <section id="category-details">
+{% load static %}
+{% comment %} <div class="container"> {% endcomment %}
+    <img src ="{% static 'images/cake.jpg' %}" class = "cake"/>
+    <div id="category-details" class="cake_category">
         <h1>{{ category.name }}</h1>
         <h1>Cake Recipe Names: </h1>
         <ol>
@@ -22,8 +26,9 @@
         {% endfor %}
         </ol>
 
-    </section>
+    {% comment %} </div> {% endcomment %}
+    </div>
 
 </body>
-</html>
+{% comment %} </html> {% endcomment %}
 {% endblock content %}

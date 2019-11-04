@@ -1,16 +1,43 @@
+{% extends 'shared/base.html' %}
+{% load bootstrap4 %}
 
-<!DOCTYPE html>
-<html>
+{% load staticfiles %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Sweets PLUS</title>
-</head>
 
-<body>
+{% comment %} <!DOCTYPE html> {% endcomment %}
+{% comment %} <html> {% endcomment %}
 
-    <h1>Welcome to Sweets PLUS, Reta's Delicious Treats</h1>
 
-</body>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+    {% endblock %}
+    {% comment %} <title>Sweets PLUS</title> {% endcomment %}
 
-</html>
+
+{% block content %}
+<body class="home">
+
+{% load static %}
+    {% comment %} <div class="container"> {% endcomment %}
+    <div class="jumbotron home">
+    <h1>Welcome</h1>
+    <img src ="{% static 'images/sweets.png' %}"/>
+
+    </div>
+    </div>
+
+    {% comment %} <form action="{% url 'sweetsplusapp:login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="login">
+        <button >Login Here</button>
+    </form>
+    <form action="{% url 'sweetsplusapp:register' %}">
+        {% csrf_token %}
+        <input type="hidden" name="register">
+        <button>New to Sweets, Register Here</button>
+    </form> {% endcomment %}
+    {% endblock content %}
+
+{% comment %} </body> {% endcomment %}
+
+{% comment %} </html> {% endcomment %}

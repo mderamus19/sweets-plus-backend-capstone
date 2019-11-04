@@ -5,19 +5,30 @@
 <head>
     <meta charset="utf-8">
     <title>Sweets Plus</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <style>
+
         .navList {
             list-style-type: none;
             display: flex;
-            border: 1px solid lightgray;
-            padding: 1em;
+            border: 2px solid dark blue;
+            background-color: gray;
+            padding: .5em;
         }
 
         .navList__route {
-            margin: 0 0.5em;
+            margin: 0 1.5em;
+        }
+        a {
+            color: black;
         }
     </style>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+    {% block css %}
+    {% endblock %}
 </head>
 
 <body>

@@ -1,0 +1,12 @@
+.home {
+    background:skyblue;
+}
+.jumbotron {
+    margin-top:10px;
+    background-size:cover;
+     text-align: center;
+     font-family: fancy;
+     height: 5em;
+     padding: 0;
+
+}
