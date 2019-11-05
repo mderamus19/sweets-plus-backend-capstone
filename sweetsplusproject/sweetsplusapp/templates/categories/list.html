@@ -11,11 +11,12 @@
     <meta charset="utf-8">
     <title>Sweets Plus</title>
   </head>
-  <body>
   {% load static %}
       <img src ="{% static 'images/assorted.jpg' %}" class = "assorted">
+<div class="container-category">
+  <body class="all_categories">
 
-    <h1>Categories</h1>
+    <h1>Delicacies</h1>
 {% comment %} category is singular because you are looking for a singular category {% endcomment %}
     <ol>
     {% for category in all_categories %}
@@ -26,5 +27,6 @@
     </ol>
 
   </body>
+  </div>
 </html>
 {% endblock content%}

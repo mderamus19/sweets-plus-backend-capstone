@@ -1,5 +1,8 @@
 {% extends 'shared/base.html' %}
-
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/favorite.css' %}" />
+{% endblock %}
 {% block content %}
 
 <!DOCTYPE html>
@@ -8,6 +11,9 @@
     <meta charset="utf-8">
     <title>Sweets Plus</title>
   </head>
+{% load static %}
+      <img src ="{% static 'images/cake.jpg' %}" class = "cake">
+<div class = "container">
   <body>
     <h1>Favorites</h1>
 {% comment %} favorite is singular because you are looking for a singular favorite {% endcomment %}
@@ -20,5 +26,6 @@
     </ol>
 
   </body>
+  </div>
 </html>
 {% endblock content%}

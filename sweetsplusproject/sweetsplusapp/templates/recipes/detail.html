@@ -1,20 +1,30 @@
 {% extends 'shared/base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/recipe.css' %}" />
+{% endblock %}
 {% block content %}
 
-<!DOCTYPE html>
-<html>
+{% comment %} <!DOCTYPE html> {% endcomment %}
+{% comment %} <html> {% endcomment %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Recipe</title>
-</head>
+{% comment %} <head> {% endcomment %}
+    {% comment %} <meta charset="utf-8"> {% endcomment %}
+    {% comment %} <title>Recipe</title> {% endcomment %}
+{% comment %} </head> {% endcomment %}
+{% load static %}
+  <img src ="{% static 'images/cupcakes.png' %}" class="sweets"/>
+<div class="container">
+<body class="instructions">
 
-<body>
-
-    <section id="recipe-details">
-        <h1>{{ recipe.name }}</h1>
+    <section id="recipe-details" class="description">
+        <h1 class="title-page">{{ recipe.name }}</h1>
+        <div class="text"><strong>
         Description: {{ recipe.description }}<br> Ingredients: {{ recipe.ingredients }}<br>
         Cook time: {{ recipe.cook_time }}<br> Instructions: {{ recipe.instructions }}
+        </strong></div>
     </section>
 
     <section id="recipe-actions" style="display:flex;">
@@ -45,6 +55,6 @@
     </section>
 
 </body>
-
-</html>
+</div>
+{% comment %} </html> {% endcomment %}
 {% endblock content %}

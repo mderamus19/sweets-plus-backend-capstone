@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    margin-top: 50px;
+    /* margin-left: 200px; */
+    /* margin-right: 250px; */
+    opacity: .6;
+}
+ol {
+    font-size: 150%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+}
+
+.cake {
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    z-index:-1;
+    /* opacity: .7; */
+}

@@ -1,16 +1,22 @@
 {% extends 'shared/base.html' %}
+{% load staticfiles %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/recipe.css' %}" />
+{% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html>
+{% comment %} <!DOCTYPE html> {% endcomment %}
+{% comment %} <html> {% endcomment %}
 
 <head>
     <meta charset="utf-8">
     <title>Recipe</title>
 </head>
-
-<body>
-    <h1>Add New Recipe</h1>
+{% load static %}
+  <img src ="{% static 'images/cupcakes.png' %}" class="sweets"/>
+<div class="container">
+<body class="instructions">
+    <h1 class="title">Add New Recipe</h1>
 
     {% if recipe.id is not None %}
         <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="post">
@@ -19,28 +25,31 @@
     {% endif %}
         {% csrf_token %}
         <fieldset>
-            <label for="name">Name: </label>
-            <input id="name" type="text" name="name" value="{{ recipe.name }}">
+            <label for="name" class="left">Name: </label>
+            <input id="name" class="right" type="text" name="name" value="{{ recipe.name }}">
         </fieldset>
         <fieldset>
-            <label for="description">Description: </label>
-            <input id="description" type="text" name="description" value="{{ recipe.description }}">
+            <label for="description" class="left">Description: </label>
+            <textarea rows="1" cols="50" id="description" class="right" type="text" name="description" value="{{ recipe.description }}">
+            </textarea>
         </fieldset>
         <fieldset>
-            <label for="ingredients">ingredients: </label>
-            <input id="ingredients" type="text" name="ingredients" value="{{ recipe.ingredients }}">
+            <label for="ingredients" class="left">ingredients: </label>
+            <textarea rows="4" cols="50" id="ingredients" class="right" type="text" name="ingredients" value="{{ recipe.ingredients }}">
+            </textarea>
         </fieldset>
         <fieldset>
-            <label for="cook_time">Cook Time: </label>
-            <input id="cook_time" type="text" name="cook_time" value="{{ recipe.cook_time }}">
+            <label for="cook_time" class="left">Cook Time: </label>
+            <input id="cook_time" class="right" type="text" name="cook_time" value="{{ recipe.cook_time }}">
         </fieldset>
         <fieldset>
-            <label for="instructions">Instructions: </label>
-            <input id="instructions" type="text" name="instructions" value="{{ recipe.instructions }}">
+            <label for="instructions" class="left">Instructions: </label>
+            <textarea rows="4" cols="50" id="instructions" class="right" type="text" name="instructions" value="{{ recipe.instructions }}">
+            </textarea>
         </fieldset>
         <fieldset>
-            <label for="category">Category: </label>
-            <select id="category" type="text" name="category">
+            <label for="category" class="left">Category: </label>
+            <select id="category" class="right" type="text" name="category">
                 {% for category in all_categories %}
                 <option {% if category.id == recipe.category_id %}selected{% endif %} value="{{ category.id }}">
                     {{ category.name }}</option>
@@ -50,12 +59,13 @@
 
         {% if recipe.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <input type="submit" value="Update" />
+            <input type="submit" value="Update" class="update"/>
         {% else %}
-            <input type="submit" value="Save" />
+            <input type="submit" class="submit" value="Save" />
         {% endif %}
 
     </form>
 </body>
-</html>
+</div>
+{% comment %} </html> {% endcomment %}
 {% endblock content %}

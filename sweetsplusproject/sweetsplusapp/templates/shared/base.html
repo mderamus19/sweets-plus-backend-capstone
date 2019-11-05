@@ -25,6 +25,9 @@
         a {
             color: black;
         }
+        .name {
+            margin-left: 120px;
+        }
     </style>
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
     {% block css %}
@@ -35,16 +38,16 @@
 
     <nav id="site-nav">
         <ol class="navList">
-            <li class="navList__route"><a href="{% url 'sweetsplusapp:categories' %}">Categories</a>
+            <li class="navList__route"><a href="{% url 'sweetsplusapp:categories' %}">Delicacies</a>
             <li class="navList__route"><a href="{% url 'sweetsplusapp:recipe_form' %}">Add Recipe</a>
             <li class="navList__route"><a href="{% url 'sweetsplusapp:favorites' %}">Favorites</a>
             {% if request.user.is_authenticated %}
                 <li class="navList__route"><a href="{% url 'sweetsplusapp:logout' %}">Logout</a></li>
+              <div class="name">   Hello, {{user.first_name}}!</div>
             {% else %}
                 <li class="navList__route"><a href="{% url 'sweetsplusapp:login' %}">Login</a></li>
             {% endif %}
         </ol>
-                 Hello, {{user.first_name}}!
     </nav>
 
     {% block content %}
