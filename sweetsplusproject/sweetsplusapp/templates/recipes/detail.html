@@ -4,6 +4,11 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'styles/recipe.css' %}" />
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 {% endblock %}
 {% block content %}
 
@@ -32,24 +37,24 @@
         <form action="{% url 'sweetsplusapp:favorites' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="recipe_id" id="recipe_id" value="{{recipe.id}}">
-             <button value="{{recipe.id}}" type = "submit">Add To Favorites</button>
+             <button value="{{recipe.id}}" type = "submit" class="glyphicon glyphicon-heart btn btn-danger btn-sm"> Favorites</button>
         </form>
         <form action="{% url 'sweetsplusapp:favorite' recipe.id  %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
-             <button>Remove from Favorites</button>
+             <button class="glyphicon glyphicon-thumbs-down btn btn-secondary btn-sm"> Favorites</button>
         </form>
         {% comment %} give user access to only edit or delete their recipe {% endcomment %}
 
         {% if is_cook %}
         <form action="{% url 'sweetsplusapp:recipe_edit_form' recipe.id %}" method="GET">
             {% csrf_token %}
-            <button>Edit Recipe</button>
+            <button class="glyphicon glyphicon-pencil btn btn-light btn-sm"> Edit</button>
         </form>
         <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
-            <button>Delete Recipe</button>
+            <button class="glyphicon glyphicon-trash btn btn-dark btn-sm"> Delete</button>
         </form>
         {% endif %}
     </section>

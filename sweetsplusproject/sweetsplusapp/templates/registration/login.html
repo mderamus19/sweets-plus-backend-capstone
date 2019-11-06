@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
+  {% comment %} <h2>Login</h2> {% endcomment %}
 {% load static %}
 
   <img src ="{% static 'images/sweets.png' %}" class="login"/>
@@ -14,6 +14,6 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit" class="submit">Login For A Treat!</button>
   </form>
 {% endblock %}
