@@ -1,22 +1,61 @@
-.cake {
+.food {
     width: 100%;
     position: absolute;
-    top: 10px;
+    top: 59px;
     z-index:-1;
-    opacity: .7;
+    /* opacity: .7; */
 }
 .assorted {
     width: 100%;
     position: absolute;
     top: 10px;
     z-index:-1;
-    opacity: .7;
 }
-.cake_category {
-    color: black;
+.food-category {
+    color:black;
     margin-left: 20px;
-    margin-top: 70px;
-}
-a.cake_category {
+    margin-top: 10px;
+    /* opacity: .7; */
+
+ }
+
+a.food_category {
     color: blue;
+ }
+
+ .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 2px solid black;
+    opacity: .6;
+    width: 300px;
+    height: 280px;
+    margin-top: 40px;
+}
+
+.container-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 2px solid black;
+    opacity: .6;
+    /* width: 100px; */
+    margin-top: 80px;
+    margin-left: 350px;
+    margin-right: 350px;
+
+
+}
+ol {
+    font-size: 150%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* color:black; */
+}
+.all_categories {
+    color: black;
 }

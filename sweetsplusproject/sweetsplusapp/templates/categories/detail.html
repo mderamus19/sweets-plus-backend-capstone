@@ -10,14 +10,14 @@
     {% comment %} <meta charset="utf-8"> {% endcomment %}
     {% comment %} <title>Category</title> {% endcomment %}
 {% comment %} </head> {% endcomment %}
-
-<body>
 {% load static %}
+    <img src ="{% static 'images/food.jpg' %}" class = "food"/>
+<div class="container">
+<body>
 {% comment %} <div class="container"> {% endcomment %}
-    <img src ="{% static 'images/cake.jpg' %}" class = "cake"/>
-    <div id="category-details" class="cake_category">
+    <div id="category-details" class="food-category">
         <h1>{{ category.name }}</h1>
-        <h1>Cake Recipe Names: </h1>
+        {% comment %} <h1 class="cake-title">Cakes: </h1> {% endcomment %}
         <ol>
         {% for recipe in category.recipes.all %}
             <li>
@@ -30,5 +30,5 @@
     </div>
 
 </body>
-{% comment %} </html> {% endcomment %}
+</div>
 {% endblock content %}
