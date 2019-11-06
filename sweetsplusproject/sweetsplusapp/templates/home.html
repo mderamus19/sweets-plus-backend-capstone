@@ -1,43 +1,18 @@
 {% extends 'shared/base.html' %}
 {% load bootstrap4 %}
-
 {% load staticfiles %}
-
-
-{% comment %} <!DOCTYPE html> {% endcomment %}
-{% comment %} <html> {% endcomment %}
-
 
     {% block css %}
     <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
     {% endblock %}
-    {% comment %} <title>Sweets PLUS</title> {% endcomment %}
-
 
 {% block content %}
 <body class="home">
 
 {% load static %}
-    {% comment %} <div class="container"> {% endcomment %}
     <div class="jumbotron home">
     <h1>Welcome</h1>
     <img src ="{% static 'images/sweets.png' %}"/>
-
     </div>
     </div>
-
-    {% comment %} <form action="{% url 'sweetsplusapp:login' %}">
-        {% csrf_token %}
-        <input type="hidden" name="login">
-        <button >Login Here</button>
-    </form>
-    <form action="{% url 'sweetsplusapp:register' %}">
-        {% csrf_token %}
-        <input type="hidden" name="register">
-        <button>New to Sweets, Register Here</button>
-    </form> {% endcomment %}
-    {% endblock content %}
-
-{% comment %} </body> {% endcomment %}
-
-{% comment %} </html> {% endcomment %}
+{% endblock content %}

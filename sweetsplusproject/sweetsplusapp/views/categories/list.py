@@ -2,12 +2,10 @@ import sqlite3
 from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import redirect
-# from django.contrib.auth.decorators import login_required
 from sweetsplusapp.models import Category
 from sweetsplusapp.models import model_factory
 from ..connection import Connection
 
-# @login_required
 def list_categories(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
