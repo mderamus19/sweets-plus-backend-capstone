@@ -1,6 +1,13 @@
 {% load staticfiles %}
 {% block content %}
-<!DOCTYPE html>
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}" />
+{% endblock %}
+
+{% load static %}
+
+  <img src ="{% static 'images/sweets.png' %}" class="register"/>
 <html>
 
 <head>
@@ -9,42 +16,48 @@
 </head>
 
 <body>
-    <h1>Please Register</h1>
-
+    <h1 class="register-title">Please Register</h1>
+<div class="container">
         <form action="{% url 'sweetsplusapp:register' %}" method="post">
         {% csrf_token %}
         <fieldset>
-            <label for="first_name">First Name: </label>
-            <input id="first_name" type="text" name="first_name" value="{{ register.first_name }}">
+            <label for="first_name"class="left" >First Name: </label>
+            <input id="first_name" class="right" type="text" name="first_name" value="{{ register.first_name }}">
         </fieldset>
         <fieldset>
-            <label for="last_name">Last Name: </label>
-            <input id="last_name" type="text" name="last_name" value="{{ register.last_name }}">
+            <label for="last_name" class="left">Last Name: </label>
+            <input id="last_name" class="right" type="text" name="last_name" value="{{ register.last_name }}">
         </fieldset>
         <fieldset>
-            <label for="username">Username: </label>
-            <input id="username" type="text" name="username" value="{{ register.username }}">
+            <label for="username" class="left">Username: </label>
+            <input id="username" class="right" type="text" name="username" value="{{ register.username }}">
         </fieldset>
         <fieldset>
-            <label for="email">Email: </label>
-            <input id="email" type="text" name="email" value="{{ register.email }}">
+            <label for="email" class="left">Email: </label>
+            <input id="email"  class="right" type="text" name="email" value="{{ register.email }}">
         </fieldset>
         <fieldset>
-            <label for="password">Password: </label>
-            <input id="password" type="text" name="password" value="{{ register.password }}">
+            <label for="password" class="left">Password: </label>
+            <input id="password" class="right" type="text" name="password" value="{{ register.password }}">
         </fieldset>
         <fieldset>
-            <label for="verify_password">Verify Password: </label>
-            <input id="verify_password" type="text" name="verify_password" value="{{ register.verify_password }}">
+            <label for="verify_password" class="left">Verify Password: </label>
+            <input id="verify_password" class="right" type="text" name="verify_password" value="{{ register.verify_password }}">
         </fieldset>
         {% if register.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
             <input type="submit" value="Update" />
         {% else %}
-            <input type="submit" value="Save" />
+            <input type="submit" class="submit" value="Register" />
         {% endif %}
 
     </form>
+</div>
+    <form action="{% url 'sweetsplusapp:login' %}">
+    {% csrf_token %}
+    <input type="hidden" name="login">
+    <button type="submit" class="submit-login">Return to Login</button>
+  </form>
 {% endblock %}
 </body>
 

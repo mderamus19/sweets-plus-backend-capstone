@@ -17,13 +17,9 @@
   <body>
     <h1>Favorites</h1>
 {% comment %} favorite is singular because you are looking for a singular favorite {% endcomment %}
-    <ol>
     {% for favorite in all_favorites %}
-    <li>
-      <a href="{% url 'sweetsplusapp:recipe' favorite.recipe_id %}">{{favorite.recipe.name }}</a>
-    </li>
+      <a href="{% url 'sweetsplusapp:recipe' favorite.recipe_id %}" class="favorite">{{favorite.recipe.name }}</a>
     {% endfor %}
-    </ol>
 
   </body>
   </div>
