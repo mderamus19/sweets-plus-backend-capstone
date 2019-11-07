@@ -3,7 +3,6 @@
     position: absolute;
     top: 59px;
     z-index:-1;
-    /* opacity: .7; */
 }
 .assorted {
     width: 100%;
@@ -15,7 +14,6 @@
     color:black;
     margin-left: 20px;
     margin-top: 10px;
-    /* opacity: .7; */
 
  }
 
@@ -44,7 +42,6 @@ a.food_category {
     background: white;
     border: 2px solid black;
     opacity: .6;
-    /* width: 100px; */
     margin-top: 80px;
     margin-left: 350px;
     margin-right: 350px;
@@ -58,4 +55,7 @@ ol {
 }
 .all_categories {
     color: black;
+}
+.cat-name {
+    margin: 5px;
 }

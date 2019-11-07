@@ -15,4 +15,9 @@
     {{ form.as_p }}
     <button type="submit" class="submit">Login For A Treat!</button>
   </form>
+  <form action="{% url 'sweetsplusapp:register' %}">
+    {% csrf_token %}
+    <input type="hidden" name="register">
+    <button type="submit" class="submit">New to Sweets, Register Here</button>
+  </form>
 {% endblock %}
