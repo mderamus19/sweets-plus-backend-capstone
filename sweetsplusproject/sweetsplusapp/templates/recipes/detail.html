@@ -24,9 +24,10 @@
         <strong>Cook time:</strong> {{ recipe.cook_time }}<br> <strong>Instructions:</strong> {{ recipe.instructions }}
         </div>
     </section>
+</div>
 
+    <div class="fav-btn">
     <section id="recipe-actions" style="display:flex;">
-
         <form action="{% url 'sweetsplusapp:favorites' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="recipe_id" id="recipe_id" value="{{recipe.id}}">
@@ -49,9 +50,9 @@
             <input type="hidden" name="actual_method" value="DELETE">
             <button class="glyphicon glyphicon-trash btn btn-dark btn-sm"> Delete</button>
         </form>
+        </div>
         {% endif %}
     </section>
 
 </body>
-</div>
 {% endblock content %}

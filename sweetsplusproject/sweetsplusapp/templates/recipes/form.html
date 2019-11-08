@@ -14,7 +14,7 @@
   <img src ="{% static 'images/cupcakes.png' %}" class="sweets"/>
 <div class="container">
 <body class="instructions">
-    <h1 class="title">Add New Recipe</h1>
+    <h1 class="title">Recipe Details</h1>
 
     {% if recipe.id is not None %}
         <form action="{% url 'sweetsplusapp:recipe' recipe.id %}" method="post">
@@ -28,13 +28,13 @@
         </fieldset>
         <fieldset>
             <label for="description" class="left">Description: </label>
-            <textarea rows="1" cols="50" id="description" class="right" type="text" name="description" value="{{ recipe.description }}">
-            </textarea>
+            <input id="description" class="right" type="text" name="description" value="{{ recipe.description }}">
+            </input>
         </fieldset>
         <fieldset>
             <label for="ingredients" class="left">ingredients: </label>
-            <textarea rows="4" cols="50" id="ingredients" class="right" type="text" name="ingredients" value="{{ recipe.ingredients }}">
-            </textarea>
+            <input id="ingredients" class="right" type="text" name="ingredients" value="{{ recipe.ingredients }}">
+            </input>
         </fieldset>
         <fieldset>
             <label for="cook_time" class="left">Cook Time: </label>
@@ -42,8 +42,8 @@
         </fieldset>
         <fieldset>
             <label for="instructions" class="left">Instructions: </label>
-            <textarea rows="4" cols="50" id="instructions" class="right" type="text" name="instructions" value="{{ recipe.instructions }}">
-            </textarea>
+            <input id="instructions" class="right" type="text" name="instructions" value="{{ recipe.instructions }}">
+            </input>
         </fieldset>
         <fieldset>
             <label for="category" class="left">Category: </label>
