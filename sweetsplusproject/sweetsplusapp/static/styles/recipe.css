@@ -3,6 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: .6;
+    /* width: 550px; */
+    background: #ededed;
 }
 #a {
     color: black;
@@ -33,10 +36,8 @@
     background:skyblue;
 }
 .description {
-    background:white;
+    /* background:white; */
     color:black;
-    opacity: .6;
-    width: 400px;
     margin-bottom: 5px;
 
 }
@@ -58,8 +59,15 @@ ol {
     z-index:-1;
 }
 .glyphicon {
+    margin-top: 20px;
+    margin-right: 15px;
     color:red;
 }
+.fav-btn {
+    margin-left: 220px;
+
+}
+
 .left {
     width: 30%;
     float: left;
